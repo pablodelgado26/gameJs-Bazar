@@ -105,6 +105,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-fechar-regras').addEventListener('click', fecharModalRegras);
 });
 
+// Redesenhar tabuleiro quando a orientação ou tamanho da tela mudar
+window.addEventListener('resize', () => {
+    if (document.getElementById('jogo-screen').style.display === 'block') {
+        desenharTabuleiro();
+    }
+});
+
+window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+        if (document.getElementById('jogo-screen').style.display === 'block') {
+            desenharTabuleiro();
+        }
+    }, 100);
+});
+
 function iniciarTutorial() {
     document.getElementById('boas-vindas-screen').style.display = 'none';
     document.getElementById('tutorial-screen').style.display = 'flex';
@@ -308,11 +323,26 @@ function desenharTabuleiro() {
     
     ctx.clearRect(0, 0, largura, altura);
     
-    // Criar caminho em espiral com casas retangulares
-    const casaLargura = 70;
-    const casaAltura = 60;
-    const espacamento = 5;
-    const margem = 50;
+    // Ajustar tamanho das casas baseado na largura da tela
+    const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 480;
+    
+    let casaLargura = 70;
+    let casaAltura = 60;
+    let espacamento = 5;
+    let margem = 50;
+    
+    if (isSmallMobile) {
+        casaLargura = 45;
+        casaAltura = 40;
+        espacamento = 3;
+        margem = 20;
+    } else if (isMobile) {
+        casaLargura = 55;
+        casaAltura = 48;
+        espacamento = 4;
+        margem = 30;
+    }
     
     // Definir posições das casas em espiral
     const posicoes = calcularPosicoesEspiral(largura, altura, casaLargura, casaAltura, espacamento, margem);
@@ -330,28 +360,31 @@ function desenharTabuleiro() {
             ctx.translate(pos.x + pos.largura / 2, pos.y + pos.altura / 2);
             ctx.rotate(pos.angulo);
             
-            // Desenhar casa retangular
+            // Desenhar casa retangular com cores bonitas
             if (casa.tipo === 'inicio') {
-                ctx.fillStyle = '#111a50';
+                ctx.fillStyle = '#1e2555';
             } else if (casa.tipo === 'fim') {
-                ctx.fillStyle = '#111a50';
+                ctx.fillStyle = '#1e2555';
             } else if (casa.tipo === 'azul') {
-                ctx.fillStyle = '#111a50';
+                ctx.fillStyle = '#1e2555';
             } else if (casa.tipo === 'amarela') {
-                ctx.fillStyle = '#ef8225';
+                ctx.fillStyle = '#f4d35e';
             } else if (casa.tipo === 'vermelha') {
-                ctx.fillStyle = '#bce3f9';
+                ctx.fillStyle = '#e63946';
             }
             
             ctx.fillRect(-pos.largura / 2, -pos.altura / 2, pos.largura, pos.altura);
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 5;
             ctx.strokeRect(-pos.largura / 2, -pos.altura / 2, pos.largura, pos.altura);
             
             // Texto na casa
+            const fontSize = isSmallMobile ? 10 : (isMobile ? 12 : 14);
+            const fontSizeFim = isSmallMobile ? 12 : (isMobile ? 14 : 16);
+            
             if (casa.tipo === 'inicio') {
-                ctx.fillStyle = '#ef8225';
-                ctx.font = 'bold 14px Arial';
+                ctx.fillStyle = '#f4d35e';
+                ctx.font = `bold ${fontSize}px Arial`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.save();
@@ -359,8 +392,8 @@ function desenharTabuleiro() {
                 ctx.fillText('COMEÇO', 0, 0);
                 ctx.restore();
             } else if (casa.tipo === 'fim') {
-                ctx.fillStyle = '#ef8225';
-                ctx.font = 'bold 16px Arial';
+                ctx.fillStyle = '#f4d35e';
+                ctx.font = `bold ${fontSizeFim}px Arial`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('FIM', 0, 0);
@@ -370,19 +403,22 @@ function desenharTabuleiro() {
         }
     });
     
-    // Desenhar jogadores
+    // Desenhar jogadores com tamanho ajustado
+    const raioJogador = isSmallMobile ? 8 : (isMobile ? 10 : 12);
+    const offsetBase = isSmallMobile ? 12 : (isMobile ? 15 : 20);
+    
     estadoJogo.jogadores.forEach((jogador, index) => {
         const casa = estadoJogo.casas[jogador.posicao];
         if (casa && casa.x !== undefined) {
-            const offsetX = (index % 2) * 20 - 10;
-            const offsetY = Math.floor(index / 2) * 20 - 10;
+            const offsetX = (index % 2) * offsetBase - (offsetBase / 2);
+            const offsetY = Math.floor(index / 2) * offsetBase - (offsetBase / 2);
             
             ctx.beginPath();
-            ctx.arc(casa.x + casa.largura / 2 + offsetX, casa.y + casa.altura / 2 + offsetY, 12, 0, Math.PI * 2);
+            ctx.arc(casa.x + casa.largura / 2 + offsetX, casa.y + casa.altura / 2 + offsetY, raioJogador, 0, Math.PI * 2);
             ctx.fillStyle = jogador.cor;
             ctx.fill();
             ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 3;
+            ctx.lineWidth = isSmallMobile ? 2 : 3;
             ctx.stroke();
         }
     });

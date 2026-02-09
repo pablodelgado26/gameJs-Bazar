@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -10,6 +11,9 @@ body {
     min-height: 100vh;
     padding: 20px;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
 }
 
 /* ANIMAÇÕES */
@@ -46,6 +50,35 @@ body {
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+/* Touch-friendly para dispositivos móveis */
+@media (hover: none) and (pointer: coarse) {
+    .produto-card:hover,
+    .opcao-decisao:hover,
+    .opcao-resposta:hover,
+    .dica-card:hover {
+        transform: none;
+    }
+    
+    .produto-card:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+    }
+    
+    .opcao-decisao:active,
+    .opcao-resposta:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+    }
+    
+    button:active,
+    .btn-primary:active,
+    .btn-hero:active,
+    .btn-dado:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+    }
 }
 
 /* TELA DE BOAS-VINDAS */
@@ -88,13 +121,13 @@ body {
 
 .titulo-principal {
     font-size: 4.5em;
-    background: linear-gradient(45deg, #ef8225, #111a50, #bce3f9);
+    background: linear-gradient(45deg, #f4d35e, #1e2555, #e63946);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 10px;
     animation: pulse 2s ease-in-out infinite;
-    text-shadow: 0 0 30px rgba(239, 130, 37, 0.3);
+    text-shadow: 0 0 30px rgba(244, 211, 94, 0.3);
 }
 
 .subtitulo {
@@ -149,8 +182,8 @@ body {
 }
 
 .btn-hero {
-    background: linear-gradient(45deg, #ef8225 0%, #ff9d4d 100%);
-    color: white;
+    background: linear-gradient(45deg, #f4d35e 0%, #f9e07f 100%);
+    color: #1e2555;
     border: none;
     padding: 20px 60px;
     font-size: 1.5em;
@@ -158,14 +191,14 @@ body {
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-    box-shadow: 0 10px 30px rgba(239, 130, 37, 0.4);
+    box-shadow: 0 10px 30px rgba(244, 211, 94, 0.4);
     transition: all 0.3s ease;
     animation: pulse 2s ease-in-out infinite;
 }
 
 .btn-hero:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(239, 130, 37, 0.6);
+    box-shadow: 0 15px 40px rgba(244, 211, 94, 0.6);
 }
 
 /* TELA DE TUTORIAL */
@@ -233,17 +266,17 @@ body {
 }
 
 .tutorial-destaque {
-    background: linear-gradient(135deg, #bce3f9 0%, #d4edfc 100%);
+    background: linear-gradient(135deg, #f4d35e 0%, #f9e07f 100%);
     padding: 25px;
     border-radius: 20px;
     margin: 25px 0;
-    border-left: 5px solid #111a50;
-    box-shadow: 0 5px 20px rgba(17, 26, 80, 0.3);
+    border-left: 5px solid #1e2555;
+    box-shadow: 0 5px 20px rgba(30, 37, 85, 0.3);
 }
 
 .tutorial-destaque p {
     margin: 10px 0;
-    color: #2c3e50;
+    color: #1e2555;
     font-weight: 600;
 }
 
@@ -288,18 +321,22 @@ body {
 }
 
 .casa-tutorial.azul {
-    background: linear-gradient(135deg, #111a50 0%, #1e2a6b 100%);
+    background: linear-gradient(135deg, #1e2555 0%, #2a3875 100%);
     color: white;
+    border: 4px solid white;
 }
 
 .casa-tutorial.amarela {
-    background: linear-gradient(135deg, #ef8225 0%, #ff9d4d 100%);
-    color: white;
+    background: linear-gradient(135deg, #f4d35e 0%, #f9e07f 100%);
+    color: #1e2555;
+    border: 4px solid white;
+    font-weight: bold;
 }
 
 .casa-tutorial.vermelha {
-    background: linear-gradient(135deg, #bce3f9 0%, #d4edfc 100%);
-    color: #111a50;
+    background: linear-gradient(135deg, #e63946 0%, #f25c66 100%);
+    color: white;
+    border: 4px solid white;
 }
 
 .casa-tutorial span {
@@ -326,13 +363,13 @@ body {
     padding: 25px;
     border-radius: 15px;
     text-align: center;
-    border: 3px solid #ef8225;
+    border: 3px solid #f4d35e;
     transition: all 0.3s ease;
 }
 
 .dica-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(239, 130, 37, 0.3);
+    box-shadow: 0 10px 30px rgba(244, 211, 94, 0.3);
 }
 
 .dica-icon {
@@ -368,7 +405,7 @@ body {
 }
 
 .progress-dot.active {
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     transform: scale(1.3);
 }
 
@@ -408,7 +445,7 @@ body {
 
 h1 {
     text-align: center;
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -425,7 +462,7 @@ h2 {
 
 /* BOTÕES */
 .btn-primary {
-    background: linear-gradient(45deg, #111a50 0%, #1e2a6b 100%);
+    background: linear-gradient(45deg, #1e2555 0%, #2a3875 100%);
     color: white;
     border: none;
     padding: 15px 40px;
@@ -435,12 +472,14 @@ h2 {
     text-transform: uppercase;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(17, 26, 80, 0.4);
+    box-shadow: 0 10px 25px rgba(30, 37, 85, 0.4);
+    min-height: 48px;
+    min-width: 120px;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(17, 26, 80, 0.6);
+    box-shadow: 0 15px 35px rgba(30, 37, 85, 0.6);
 }
 
 .btn-grande {
@@ -448,6 +487,7 @@ h2 {
     font-size: 1.4em;
     margin: 20px auto;
     display: block;
+    min-height: 60px;
 }
 
 .btn-secondary {
@@ -500,23 +540,23 @@ h2 {
     height: 60px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(45deg, #ef8225, #ff9d4d);
+    background: linear-gradient(45deg, #e63946, #f25c66);
     color: white;
     font-size: 2em;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(239, 130, 37, 0.3);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
 }
 
 .btn-numero:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(239, 130, 37, 0.5);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.5);
 }
 
 .numero-display {
     font-size: 4em;
     font-weight: bold;
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -550,8 +590,8 @@ h2 {
 .jogador-input input:focus,
 .config-form input:focus {
     outline: none;
-    border-color: #ef8225;
-    box-shadow: 0 0 0 3px rgba(239, 130, 37, 0.1);
+    border-color: #f4d35e;
+    box-shadow: 0 0 0 3px rgba(244, 211, 94, 0.1);
 }
 
 /* PRODUTOS */
@@ -562,10 +602,10 @@ h2 {
     margin-bottom: 20px;
     font-weight: bold;
     padding: 20px;
-    background: linear-gradient(135deg, #ef8225 0%, #ff9d4d 100%);
-    color: white;
+    background: linear-gradient(135deg, #f4d35e 0%, #f9e07f 100%);
+    color: #1e2555;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(239, 130, 37, 0.3);
+    box-shadow: 0 10px 25px rgba(244, 211, 94, 0.4);
 }
 
 .produtos-contador {
@@ -588,7 +628,7 @@ h2 {
 
 .produto-card {
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border: 4px solid #111a50;
+    border: 4px solid #1e2555;
     border-radius: 20px;
     padding: 25px;
     text-align: center;
@@ -702,7 +742,7 @@ h2 {
     text-align: center;
     font-size: 3em;
     margin-bottom: 20px;
-    background: linear-gradient(45deg, #ef8225, #111a50, #bce3f9);
+    background: linear-gradient(45deg, #f4d35e, #1e2555, #e63946);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -719,6 +759,9 @@ h2 {
     display: block;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
+    touch-action: none;
 }
 
 .jogador-info {
@@ -759,8 +802,8 @@ h2 {
 }
 
 .btn-dado {
-    background: linear-gradient(45deg, #ef8225 0%, #ff9d4d 100%);
-    color: white;
+    background: linear-gradient(45deg, #f4d35e 0%, #f9e07f 100%);
+    color: #1e2555;
     border: none;
     padding: 20px;
     font-size: 1.3em;
@@ -770,7 +813,7 @@ h2 {
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(239, 130, 37, 0.4);
+    box-shadow: 0 10px 25px rgba(244, 211, 94, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -779,7 +822,7 @@ h2 {
 
 .btn-dado:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(239, 130, 37, 0.6);
+    box-shadow: 0 15px 35px rgba(244, 211, 94, 0.6);
 }
 
 .dado-icon {
@@ -842,13 +885,14 @@ h2 {
 }
 
 .carta-amarela {
-    background: linear-gradient(135deg, #ef8225 0%, #ff9d4d 100%);
-    color: white;
+    background: linear-gradient(135deg, #f4d35e 0%, #f9e07f 100%);
+    color: #1e2555;
+    font-weight: bold;
 }
 
 .carta-vermelha {
-    background: linear-gradient(135deg, #bce3f9 0%, #d4edfc 100%);
-    color: #111a50;
+    background: linear-gradient(135deg, #e63946 0%, #f25c66 100%);
+    color: white;
 }
 
 .carta-titulo {
@@ -887,7 +931,7 @@ h2 {
 .opcao-decisao {
     flex: 1;
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border: 4px solid #111a50;
+    border: 4px solid #1e2555;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
@@ -914,8 +958,8 @@ h2 {
 
 .opcao-decisao:hover {
     transform: scale(1.08);
-    box-shadow: 0 15px 40px rgba(239, 130, 37, 0.3);
-    border-color: #ef8225;
+    box-shadow: 0 15px 40px rgba(244, 211, 94, 0.3);
+    border-color: #f4d35e;
 }
 
 .opcao-decisao h3 {
@@ -936,7 +980,7 @@ h2 {
 
 .final-modal h2 {
     text-align: center;
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -945,12 +989,12 @@ h2 {
 }
 
 #pergunta-atual {
-    background: linear-gradient(135deg, #111a50 0%, #1e2a6b 100%);
+    background: linear-gradient(135deg, #1e2555 0%, #2a3875 100%);
     color: white;
     padding: 35px;
     border-radius: 20px;
     margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(17, 26, 80, 0.3);
+    box-shadow: 0 10px 30px rgba(30, 37, 85, 0.3);
 }
 
 #pergunta-atual h3 {
@@ -999,14 +1043,14 @@ h2 {
 
 .opcao-resposta:hover {
     background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-    border-color: #ef8225;
+    border-color: #f4d35e;
     transform: translateX(10px);
 }
 
 .opcao-resposta.selecionada {
-    background: linear-gradient(135deg, #111a50 0%, #1e2a6b 100%);
+    background: linear-gradient(135deg, #1e2555 0%, #2a3875 100%);
     color: white;
-    border-color: #111a50;
+    border-color: #1e2555;
     transform: scale(1.05);
 }
 
@@ -1030,7 +1074,7 @@ h2 {
 .titulo-resultado {
     text-align: center;
     font-size: 3.5em;
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1103,7 +1147,30 @@ h2 {
 }
 
 /* RESPONSIVO */
+
+/* Tablets em paisagem e desktops pequenos */
+@media (max-width: 1200px) {
+    .game-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    #tabuleiro {
+        width: 100%;
+        height: 600px;
+    }
+}
+
+/* Tablets */
 @media (max-width: 1024px) {
+    body {
+        padding: 10px;
+    }
+    
     .game-container {
         flex-direction: column;
     }
@@ -1114,11 +1181,12 @@ h2 {
     
     #tabuleiro {
         width: 100%;
-        height: auto;
+        height: 500px;
     }
     
     .decisao-opcoes {
         flex-direction: column;
+        gap: 15px;
     }
     
     .titulo-principal {
@@ -1127,6 +1195,21 @@ h2 {
     
     .hero-container {
         padding: 40px 30px;
+    }
+    
+    .modal-content {
+        padding: 35px 25px;
+        max-width: 90%;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+    
+    .tutorial-container {
+        padding: 35px 25px;
+        max-width: 90%;
     }
 }
 
@@ -1137,7 +1220,7 @@ h2 {
 
 .regras-modal h2 {
     text-align: center;
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1156,11 +1239,11 @@ h2 {
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 20px;
-    border-left: 5px solid #ef8225;
+    border-left: 5px solid #f4d35e;
 }
 
 .regra-item h3 {
-    color: #111a50;
+    color: #1e2555;
     font-size: 1.5em;
     margin-bottom: 15px;
 }
@@ -1172,37 +1255,581 @@ h2 {
 }
 
 .regra-item strong {
-    color: #111a50;
+    color: #1e2555;
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+    
     .titulo-principal {
         font-size: 2.5em;
     }
     
-    .personagem-avatar {
-        font-size: 5em;
+    .subtitulo {
+        font-size: 1.2em;
+    }
+    
+    .personagem-avatar img {
+        width: 150px;
+    }
+    
+    .balao-fala {
+        padding: 20px;
+        max-width: 280px;
     }
     
     .balao-fala p {
         font-size: 1em;
     }
     
+    .btn-hero {
+        padding: 15px 40px;
+        font-size: 1.2em;
+    }
+    
     h1 {
         font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    h2 {
+        font-size: 1.5em;
     }
     
     .tutorial-container {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        max-width: 95%;
+    }
+    
+    .tutorial-step h2 {
+        font-size: 2em;
+    }
+    
+    .tutorial-step p {
+        font-size: 1.1em;
     }
     
     .casas-exemplo,
     .dicas-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .casa-tutorial {
+        padding: 20px;
+    }
+    
+    .dica-card {
+        padding: 20px;
     }
     
     .modal-content {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        max-width: 95%;
+    }
+    
+    .carta-modal {
+        max-width: 100%;
+    }
+    
+    .carta-titulo {
+        font-size: 2em;
+    }
+    
+    .carta-texto {
+        font-size: 1.4em;
+    }
+    
+    .carta-valor {
+        font-size: 2em;
+    }
+    
+    .config-container {
+        padding: 25px 15px;
+        max-width: 95%;
+    }
+    
+    .numero-display {
+        font-size: 3em;
+    }
+    
+    .btn-numero {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+    }
+    
+    .produto-card {
+        padding: 15px;
+    }
+    
+    .produto-icon {
+        font-size: 2.5em;
+    }
+    
+    .produto-nome {
+        font-size: 0.9em;
+    }
+    
+    .produto-preco {
+        font-size: 0.85em;
+    }
+    
+    #tabuleiro {
+        width: 100%;
+        height: 400px;
+    }
+    
+    .jogo-container {
+        padding: 15px;
+    }
+    
+    .titulo-tabuleiro {
+        font-size: 2em;
+    }
+    
+    .jogadores-lista {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .jogador-card {
+        padding: 12px;
+    }
+    
+    .jogador-nome {
+        font-size: 1.1em;
+    }
+    
+    .jogador-info p {
+        font-size: 0.95em;
+    }
+    
+    .btn-dado {
+        padding: 15px;
+        font-size: 1.1em;
+    }
+    
+    #resultado-dado {
+        font-size: 3em;
+    }
+    
+    .decisao-modal {
+        max-width: 95%;
+    }
+    
+    .opcao-decisao {
+        padding: 20px;
+    }
+    
+    .opcao-decisao h3 {
+        font-size: 1.2em;
+    }
+    
+    .opcao-decisao p {
+        font-size: 1.1em;
+    }
+    
+    .final-modal h2,
+    .regras-modal h2 {
+        font-size: 2em;
+    }
+    
+    #pergunta-atual {
+        padding: 25px;
+    }
+    
+    #pergunta-atual h3 {
+        font-size: 1.5em;
+    }
+    
+    #pergunta-atual p {
+        font-size: 1.2em;
+    }
+    
+    .opcao-resposta {
+        padding: 18px;
+        font-size: 1.05em;
+    }
+    
+    .ranking-item {
+        padding: 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .ranking-posicao {
+        font-size: 2em;
+    }
+    
+    .ranking-info h3 {
+        font-size: 1.3em;
+    }
+    
+    .regra-item {
+        padding: 15px;
+    }
+    
+    .regra-item h3 {
+        font-size: 1.3em;
+    }
+    
+    .regra-item p {
+        font-size: 1em;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .titulo-principal {
+        font-size: 2em;
+        line-height: 1.2;
+    }
+    
+    .subtitulo {
+        font-size: 1em;
+    }
+    
+    .hero-container {
+        padding: 25px 15px;
+    }
+    
+    .personagem-avatar img {
+        width: 120px;
+    }
+    
+    .balao-fala {
+        padding: 15px;
+        max-width: 250px;
+    }
+    
+    .balao-fala::before {
+        border-width: 10px;
+    }
+    
+    .balao-fala p {
+        font-size: 0.9em;
+    }
+    
+    .btn-hero {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+    
+    h1 {
+        font-size: 1.6em;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+    }
+    
+    .tutorial-container {
+        padding: 20px 10px;
+    }
+    
+    .tutorial-step h2 {
+        font-size: 1.6em;
+    }
+    
+    .tutorial-step p {
+        font-size: 1em;
+    }
+    
+    .tutorial-destaque {
+        padding: 15px;
+    }
+    
+    .casa-tutorial {
+        padding: 15px;
+    }
+    
+    .casa-tutorial span {
+        font-size: 1.1em;
+    }
+    
+    .dica-card {
+        padding: 15px;
+    }
+    
+    .dica-icon {
+        font-size: 2.5em;
+    }
+    
+    .dica-card p {
+        font-size: 1em;
+    }
+    
+    .btn-primary {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+    
+    .btn-grande {
+        padding: 15px 35px;
+        font-size: 1.1em;
+    }
+    
+    .modal-content {
+        padding: 20px 12px;
+    }
+    
+    .carta-titulo {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    
+    .carta-texto {
+        font-size: 1.2em;
+    }
+    
+    .carta-valor {
+        font-size: 1.8em;
+        padding: 15px;
+    }
+    
+    .config-container {
+        padding: 20px 10px;
+    }
+    
+    .numero-selector {
+        gap: 15px;
+    }
+    
+    .numero-display {
+        font-size: 2.5em;
+        min-width: 60px;
+    }
+    
+    .btn-numero {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+    }
+    
+    .jogador-input input {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    
+    .jogador-titulo {
+        font-size: 1.4em;
+        padding: 15px;
+    }
+    
+    .produtos-contador {
+        font-size: 1.2em;
+        padding: 12px;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .produto-card {
+        padding: 12px;
+    }
+    
+    .produto-icon {
+        font-size: 2em;
+    }
+    
+    .produto-nome {
+        font-size: 0.85em;
+    }
+    
+    .produto-preco {
+        font-size: 0.8em;
+    }
+    
+    .btn-confirmar {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    
+    #tabuleiro {
+        width: 100%;
+        height: 350px;
+    }
+    
+    .jogo-container {
+        padding: 10px;
+    }
+    
+    .titulo-tabuleiro {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+    
+    .jogadores-lista {
+        gap: 8px;
+    }
+    
+    .jogador-card {
+        padding: 10px;
+    }
+    
+    .jogador-nome {
+        font-size: 1em;
+    }
+    
+    .jogador-info h3 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+    
+    .jogador-info p {
+        font-size: 0.85em;
+        margin: 5px 0;
+    }
+    
+    .btn-dado {
+        padding: 12px;
+        font-size: 1em;
+    }
+    
+    .dado-icon {
+        font-size: 1.2em;
+    }
+    
+    #resultado-dado {
+        font-size: 2.5em;
+        margin: 15px 0;
+    }
+    
+    .opcao-decisao {
+        padding: 15px;
+    }
+    
+    .opcao-decisao h3 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    .opcao-decisao p {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+    
+    .final-modal h2,
+    .regras-modal h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    
+    #pergunta-atual {
+        padding: 20px;
+    }
+    
+    #pergunta-atual h3 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    
+    #pergunta-atual p {
+        font-size: 1em;
+    }
+    
+    .opcao-resposta {
+        padding: 15px;
+        font-size: 0.95em;
+    }
+    
+    .ranking-item {
+        padding: 15px;
+    }
+    
+    .ranking-posicao {
+        font-size: 1.8em;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .ranking-info h3 {
+        font-size: 1.1em;
+    }
+    
+    .ranking-detalhes {
+        font-size: 0.9em;
+    }
+    
+    .regra-item {
+        padding: 12px;
+    }
+    
+    .regra-item h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    
+    .regra-item p {
+        font-size: 0.95em;
+        line-height: 1.6;
+    }
+    
+    .btn-regras {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
+    }
+    
+    .personagem-mini img {
+        width: 60px;
+    }
+    
+    .tutorial-navegacao {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .progress-dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Landscape mode para celulares */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-container {
+        padding: 20px;
+    }
+    
+    .personagem-avatar img {
+        width: 100px;
+    }
+    
+    .balao-fala {
+        max-width: 200px;
+        padding: 10px;
+    }
+    
+    .tutorial-container {
+        padding: 15px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 15px;
+    }
+    
+    #tabuleiro {
+        height: 300px;
     }
 }
 
@@ -1217,10 +1844,10 @@ h2 {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #ef8225, #111a50);
+    background: linear-gradient(45deg, #f4d35e, #1e2555);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #111a50, #ef8225);
+    background: linear-gradient(45deg, #1e2555, #f4d35e);
 }
