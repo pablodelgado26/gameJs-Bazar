@@ -101,6 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-fechar-carta').addEventListener('click', fecharModalCarta);
     document.getElementById('btn-responder').addEventListener('click', responderPergunta);
     document.getElementById('btn-novo-jogo').addEventListener('click', () => location.reload());
+    document.getElementById('btn-regras').addEventListener('click', mostrarModalRegras);
+    document.getElementById('btn-fechar-regras').addEventListener('click', fecharModalRegras);
 });
 
 function iniciarTutorial() {
@@ -330,15 +332,15 @@ function desenharTabuleiro() {
             
             // Desenhar casa retangular
             if (casa.tipo === 'inicio') {
-                ctx.fillStyle = '#1e3a5f';
+                ctx.fillStyle = '#111a50';
             } else if (casa.tipo === 'fim') {
-                ctx.fillStyle = '#1e3a5f';
+                ctx.fillStyle = '#111a50';
             } else if (casa.tipo === 'azul') {
-                ctx.fillStyle = '#1e3a5f';
+                ctx.fillStyle = '#111a50';
             } else if (casa.tipo === 'amarela') {
-                ctx.fillStyle = '#ffd93d';
+                ctx.fillStyle = '#ef8225';
             } else if (casa.tipo === 'vermelha') {
-                ctx.fillStyle = '#ff5252';
+                ctx.fillStyle = '#bce3f9';
             }
             
             ctx.fillRect(-pos.largura / 2, -pos.altura / 2, pos.largura, pos.altura);
@@ -348,7 +350,7 @@ function desenharTabuleiro() {
             
             // Texto na casa
             if (casa.tipo === 'inicio') {
-                ctx.fillStyle = '#ff8c42';
+                ctx.fillStyle = '#ef8225';
                 ctx.font = 'bold 14px Arial';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -357,7 +359,7 @@ function desenharTabuleiro() {
                 ctx.fillText('COMEÇO', 0, 0);
                 ctx.restore();
             } else if (casa.tipo === 'fim') {
-                ctx.fillStyle = '#ff8c42';
+                ctx.fillStyle = '#ef8225';
                 ctx.font = 'bold 16px Arial';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -783,4 +785,12 @@ function mostrarResultadoFinal(ranking) {
     });
     
     modal.style.display = 'flex';
+}
+
+function mostrarModalRegras() {
+    document.getElementById('modal-regras').style.display = 'flex';
+}
+
+function fecharModalRegras() {
+    document.getElementById('modal-regras').style.display = 'none';
 }

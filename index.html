@@ -13,7 +13,9 @@
             <h1 class="titulo-principal">🎪 O BAZAR 🎪</h1>
             <p class="subtitulo">Uma aventura de educação financeira!</p>
             <div class="personagem-principal">
-                <div class="personagem-avatar">🧑‍🏫</div>
+                <div class="personagem-avatar">
+                    <img src="images/nitrinho.png" alt="Nitrinho">
+                </div>
                 <div class="balao-fala">
                     <p>Olá! Eu sou o Nitrinho! 👋<br>Vou te ensinar a economizar e fazer boas escolhas!</p>
                 </div>
@@ -25,7 +27,9 @@
     <div id="tutorial-screen" style="display: none;">
         <div class="tutorial-container">
             <div class="personagem-tutorial">
-                <div class="personagem-avatar">🧑‍🏫</div>
+                <div class="personagem-avatar">
+                    <img src="images/nitrinho.png" alt="Nitrinho">
+                </div>
             </div>
             <div class="tutorial-content">
                 <div class="tutorial-step" id="step-1">
@@ -111,7 +115,9 @@
 
     <div id="config-screen" style="display: none;">
         <div class="container config-animada">
-            <div class="personagem-mini">🧑‍🏫</div>
+            <div class="personagem-mini">
+                <img src="images/nitrinho.png" alt="Nitrinho">
+            </div>
             <h1>⚙️ CONFIGURAÇÃO DO JOGO</h1>
             <div class="config-form">
                 <div class="form-group">
@@ -142,7 +148,9 @@
 
     <div id="escolha-produtos-screen" style="display: none;">
         <div class="container produtos-animada">
-            <div class="personagem-mini">🧑‍🏫</div>
+            <div class="personagem-mini">
+                <img src="images/nitrinho.png" alt="Nitrinho">
+            </div>
             <h1>🛍️ ESCOLHA SEUS PRODUTOS</h1>
             <div id="jogador-atual-produtos" class="jogador-titulo"></div>
             <div id="produtos-selecionados" class="produtos-contador"></div>
@@ -156,7 +164,9 @@
             <div class="sidebar">
                 <div class="sidebar-header">
                     <h2>👥 JOGADORES</h2>
-                    <div class="personagem-mini-jogo">🧑‍🏫</div>
+                    <div class="personagem-mini-jogo">
+                        <img src="images/nitrinho.png" alt="Nitrinho">
+                    </div>
                 </div>
                 <div id="jogadores-info"></div>
                 
@@ -211,6 +221,46 @@
             <h1 class="titulo-resultado">🏆 RESULTADO FINAL 🏆</h1>
             <div id="resultado-final"></div>
             <button id="btn-novo-jogo" class="btn-primary btn-grande">🔄 JOGAR NOVAMENTE</button>
+        </div>
+    </div>
+
+    <div id="modal-regras" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="fecharModalRegras()"></div>
+        <div class="modal-content regras-modal">
+            <h2>📖 REGRAS DO JOGO</h2>
+            <div class="regras-conteudo">
+                <div class="regra-item">
+                    <h3>🎯 OBJETIVO</h3>
+                    <p>Chegar ao bazar, comprar TODOS os 4 produtos escolhidos e ter o MAIOR dinheiro sobrando!</p>
+                </div>
+                <div class="regra-item">
+                    <h3>💰 DINHEIRO INICIAL</h3>
+                    <p>Cada jogador começa com <strong>30 bottons</strong> (moeda do jogo).</p>
+                </div>
+                <div class="regra-item">
+                    <h3>🎲 COMO JOGAR</h3>
+                    <p>• Role o dado para avançar casas no tabuleiro<br>
+                    • Cada cor de casa tem um efeito diferente</p>
+                </div>
+                <div class="regra-item">
+                    <h3>🎨 CASAS DO TABULEIRO</h3>
+                    <p><strong style="color: #111a50;">🔷 Casa Azul:</strong> Você perde a próxima vez!<br>
+                    <strong style="color: #ef8225;">🟧 Casa Laranja:</strong> Ganhe ou gaste bottons!<br>
+                    <strong style="color: #bce3f9;">🔹 Casa Azul Claro:</strong> Tome uma decisão importante!</p>
+                </div>
+                <div class="regra-item">
+                    <h3>❓ PERGUNTAS FINAIS</h3>
+                    <p>Ao chegar ao bazar, todos respondem 3 perguntas sobre educação financeira.<br>
+                    <strong>Cada resposta certa = +1 botton!</strong></p>
+                </div>
+                <div class="regra-item">
+                    <h3>🏆 COMO VENCER</h3>
+                    <p>Vence quem conseguir:<br>
+                    ✅ Comprar TODOS os 4 produtos da lista inicial<br>
+                    ✅ Ter MAIS bottons sobrando</p>
+                </div>
+            </div>
+            <button id="btn-fechar-regras" class="btn-primary btn-grande">ENTENDI! ✅</button>
         </div>
     </div>
 
