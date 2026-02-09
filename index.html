@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo - O Bazar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="boas-vindas-screen">
+        <div class="hero-container">
+            <div class="stars"></div>
+            <h1 class="titulo-principal">🎪 O BAZAR 🎪</h1>
+            <p class="subtitulo">Uma aventura de educação financeira!</p>
+            <div class="personagem-principal">
+                <div class="personagem-avatar">🧑‍🏫</div>
+                <div class="balao-fala">
+                    <p>Olá! Eu sou o Nitrinho! 👋<br>Vou te ensinar a economizar e fazer boas escolhas!</p>
+                </div>
+            </div>
+            <button id="btn-comecar" class="btn-hero">COMEÇAR AVENTURA</button>
+        </div>
+    </div>
+
+    <div id="tutorial-screen" style="display: none;">
+        <div class="tutorial-container">
+            <div class="personagem-tutorial">
+                <div class="personagem-avatar">🧑‍🏫</div>
+            </div>
+            <div class="tutorial-content">
+                <div class="tutorial-step" id="step-1">
+                    <h2>📚 Regra 1: O Objetivo</h2>
+                    <p>Você vai visitar um bazar em Valinhos com seus amigos! Mas antes de entrar, precisa escolher 4 produtos que deseja comprar.</p>
+                    <div class="tutorial-destaque">
+                        <p>🎯 Seu objetivo é chegar ao bazar, comprar TODOS os 4 produtos escolhidos e ter o MAIOR dinheiro sobrando!</p>
+                    </div>
+                </div>
+                <div class="tutorial-step" id="step-2" style="display: none;">
+                    <h2>💰 Regra 2: Os Bottons</h2>
+                    <p>Cada jogador começa com <strong>30 bottons</strong> (o dinheiro do jogo).</p>
+                    <div class="tutorial-destaque">
+                        <div class="botton-animado">
+                            <span class="botton-icon">🪙</span>
+                            <span class="botton-icon">🪙</span>
+                            <span class="botton-icon">🪙</span>
+                        </div>
+                        <p>💡 Dica: Economize! Você vai precisar de dinheiro para comprar seus produtos no final!</p>
+                    </div>
+                </div>
+                <div class="tutorial-step" id="step-3" style="display: none;">
+                    <h2>🎲 Regra 3: O Tabuleiro</h2>
+                    <p>O caminho até o bazar tem casas coloridas. Cada cor tem um significado especial:</p>
+                    <div class="casas-exemplo">
+                        <div class="casa-tutorial azul">
+                            <span>Casa Azul</span>
+                            <p>Você perde a próxima vez!</p>
+                        </div>
+                        <div class="casa-tutorial amarela">
+                            <span>Casa Amarela</span>
+                            <p>Ganhe ou gaste bottons!</p>
+                        </div>
+                        <div class="casa-tutorial vermelha">
+                            <span>Casa Vermelha</span>
+                            <p>Tome uma decisão importante!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tutorial-step" id="step-4" style="display: none;">
+                    <h2>🏆 Regra 4: Como Vencer</h2>
+                    <p>Quando todos chegarem ao bazar, vocês responderão perguntas sobre educação financeira!</p>
+                    <div class="tutorial-destaque">
+                        <p>⭐ Cada resposta certa = +1 botton extra!</p>
+                        <p>🏅 <strong>VENCE</strong> quem conseguir comprar TODOS os 4 produtos E tiver MAIS bottons sobrando!</p>
+                    </div>
+                </div>
+                <div class="tutorial-step" id="step-5" style="display: none;">
+                    <h2>✨ Dicas Importantes</h2>
+                    <div class="dicas-grid">
+                        <div class="dica-card">
+                            <div class="dica-icon">💭</div>
+                            <p>Pense bem antes de gastar seus bottons!</p>
+                        </div>
+                        <div class="dica-card">
+                            <div class="dica-icon">🎯</div>
+                            <p>Não esqueça dos produtos que precisa comprar!</p>
+                        </div>
+                        <div class="dica-card">
+                            <div class="dica-icon">🧠</div>
+                            <p>Economizar é fundamental para vencer!</p>
+                        </div>
+                        <div class="dica-card">
+                            <div class="dica-icon">🌟</div>
+                            <p>Divirta-se e aprenda sobre dinheiro!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tutorial-navegacao">
+                    <button id="btn-anterior" class="btn-secondary" style="display: none;">⬅️ ANTERIOR</button>
+                    <div class="tutorial-progress">
+                        <span class="progress-dot active"></span>
+                        <span class="progress-dot"></span>
+                        <span class="progress-dot"></span>
+                        <span class="progress-dot"></span>
+                        <span class="progress-dot"></span>
+                    </div>
+                    <button id="btn-proximo" class="btn-primary">PRÓXIMO ➡️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="config-screen" style="display: none;">
+        <div class="container config-animada">
+            <div class="personagem-mini">🧑‍🏫</div>
+            <h1>⚙️ CONFIGURAÇÃO DO JOGO</h1>
+            <div class="config-form">
+                <div class="form-group">
+                    <label>👥 Número de Jogadores:</label>
+                    <div class="numero-selector">
+                        <button class="btn-numero" onclick="mudarNumJogadores(-1)">-</button>
+                        <span id="display-jogadores" class="numero-display">2</span>
+                        <button class="btn-numero" onclick="mudarNumJogadores(1)">+</button>
+                    </div>
+                    <input type="hidden" id="num-jogadores" value="2">
+                </div>
+                
+                <div id="nomes-jogadores">
+                    <div class="jogador-input">
+                        <label>🎮 Jogador 1:</label>
+                        <input type="text" class="nome-jogador" value="Jogador 1" placeholder="Digite o nome...">
+                    </div>
+                    <div class="jogador-input">
+                        <label>🎮 Jogador 2:</label>
+                        <input type="text" class="nome-jogador" value="Jogador 2" placeholder="Digite o nome...">
+                    </div>
+                </div>
+                
+                <button id="btn-confirmar-config" class="btn-primary btn-grande">COMEÇAR A JOGAR! 🎯</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="escolha-produtos-screen" style="display: none;">
+        <div class="container produtos-animada">
+            <div class="personagem-mini">🧑‍🏫</div>
+            <h1>🛍️ ESCOLHA SEUS PRODUTOS</h1>
+            <div id="jogador-atual-produtos" class="jogador-titulo"></div>
+            <div id="produtos-selecionados" class="produtos-contador"></div>
+            <div class="produtos-grid" id="produtos-grid"></div>
+            <button id="btn-confirmar-produtos" class="btn-primary btn-grande" style="display: none;">CONFIRMAR ESCOLHA ✅</button>
+        </div>
+    </div>
+
+    <div id="jogo-screen" style="display: none;">
+        <div class="game-container">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h2>👥 JOGADORES</h2>
+                    <div class="personagem-mini-jogo">🧑‍🏫</div>
+                </div>
+                <div id="jogadores-info"></div>
+                
+                <div class="controles">
+                    <button id="btn-rolar-dado" class="btn-dado">
+                        <span class="dado-icon">🎲</span>
+                        <span>ROLAR DADO</span>
+                    </button>
+                    <div id="resultado-dado"></div>
+                </div>
+                
+                <button id="btn-regras" class="btn-secondary">📖 VER REGRAS</button>
+            </div>
+            
+            <div class="tabuleiro-container">
+                <h1 class="titulo-tabuleiro">🎪 O BAZAR 🎪</h1>
+                <div class="tabuleiro-wrapper">
+                    <canvas id="tabuleiro" width="800" height="800"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-carta" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content carta-modal">
+            <div id="carta-conteudo"></div>
+            <button id="btn-fechar-carta" class="btn-primary btn-grande">ENTENDI! ✅</button>
+        </div>
+    </div>
+
+    <div id="modal-decisao" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content decisao-modal">
+            <div id="decisao-conteudo"></div>
+        </div>
+    </div>
+
+    <div id="modal-final" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content final-modal">
+            <h2>🎓 DESAFIO DE CONHECIMENTO</h2>
+            <div id="pergunta-atual"></div>
+            <div id="opcoes-resposta"></div>
+            <button id="btn-responder" class="btn-primary btn-grande">RESPONDER 📝</button>
+        </div>
+    </div>
+
+    <div id="modal-resultado" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content resultado-modal">
+            <h1 class="titulo-resultado">🏆 RESULTADO FINAL 🏆</h1>
+            <div id="resultado-final"></div>
+            <button id="btn-novo-jogo" class="btn-primary btn-grande">🔄 JOGAR NOVAMENTE</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
